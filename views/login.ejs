@@ -16,19 +16,17 @@
     </head>
     <!--body ist der sichbare Inhalt-->
     <body>
-        <!--h1 Heading(Überschrift) erster Ordnung -->
-       <h1>
-           Bitte melden sie sich hier an:
-       </h1>
-       <!-- <p> Paragraph(Absatz)--> 
-       <p>Benuztername</p>
-    
-    <!--input erzeugt Eingabefelder, Schaltflächen, Checkboxen und Radiobuttons in einem Formular-->
-       <input type="text" id=placeholder="123"="s150..."name="benutzername">
-       <p>Passwort</p>
-    
-    <!--password zeigt das Eingetragene mit Sternchen an-->
-       <input type="password" id="Passwort"name="Passwort">
-
-    </body>
+        <h1>Bitte anmelden!</h1>
+        <form method="POST" action="/">
+          <!-- Element, das etwas anzeigt -->
+          <label>Benutzer-ID:</label>
+          <!-- Element vom Typ Text, in das getippt werden kann -->
+          <input type="text" name="idKunde">
+          <label>Kennwort:</label>
+          <!-- Element vom Typ Password, das Eingaben maskiert -->
+          <input type="password" name="kennwort">
+          <!-- Element vom Typ Button, das eine Schaltfläche zeigt -->
+          <button>Login</button>
+        </form>     
+      </body>
 </html>
