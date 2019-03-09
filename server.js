@@ -18,9 +18,18 @@ const app = express()
  })
 
  app.get('/',(req, res, next) => {
+
+     if(req.cookies['istAngemeldetAls']){
+     
+          console.log("Kunde ist angemeldet als " + req.cookies['istAngemeldetAls'])
+        }
      res.render('index.ejs', {
-         
      })
+    }else{
+      res.render('login.ejs', {
+      })
+
+
  })
  app.get('/login',(req, res, next) => {
     res.render('login.ejs', {
