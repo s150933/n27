@@ -4,6 +4,7 @@
 const bodyParser = require('body-parser')
 
 const express = require('express')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -12,24 +13,27 @@ const app = express()
  app.use(bodyParser.urlencoded({extendet : true}))
 
  app.use(express.static('public'))
-
+app.use(cookieParser())
  const server = app.listen(process.env.PORT  || 3001,()=> {
      console.log(' Der Server ist erfolgreich gestartet auf Port %s',server.address().port)
  })
 
  app.get('/',(req, res, next) => {
 
-     if(req.cookies['istAngemeldetAls']){
+   let idKunde = req.cookies['istAngemeldetAls']
+
+    if(idKunde){
      
-          console.log("Kunde ist angemeldet als " + req.cookies['istAngemeldetAls'])
+          console.log("Kunde ist angemeldet als " + idKunde)
+          res.render('index.ejs',)
+        }else{
+          res.render('login.ejs' ,{
+    
+          })
         }
-     res.render('index.ejs', {
-     })
-    }else{
-      res.render('login.ejs', {
-      })
-
-
+     
+     
+    
  })
  app.get('/login',(req, res, next) => {
     res.render('login.ejs', {
@@ -43,7 +47,7 @@ app.post('/',(req, res, next) => {
 
       if(idKunde ==="4711"&& kennwort=== "123" ){
           console.log("Der Cookie wird gesetzt")
-          res.cookie('istAngemeldetAls','idKunde')
+          res.cookie('istAngemeldetAls',idKunde)
           res.render('index.ejs', {
 
           })
