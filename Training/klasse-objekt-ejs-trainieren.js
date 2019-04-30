@@ -86,7 +86,7 @@ spieler.position = "Mittelfeld"
 let tisch = new Tisch
 tisch.art = "Fernsehtisch"
 tisch.farbe = "Braun"
-tisch.gewicht = 36 
+tisch.gewicht = 29 +"kg"
 
 
 
@@ -105,7 +105,9 @@ app.get('/klasse-objekt-ejs-trainieren',(req, res, next) => {
         name: spieler.name,
         nummer: spieler.nummer,
         position: spieler.position,
-        art: tisch.art,           
+        art: tisch.art,
+        farbe: tisch.farbe,
+        gewicht: tisch.gewicht           
     })
 })
 
