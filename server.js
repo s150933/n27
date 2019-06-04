@@ -150,7 +150,7 @@ app.get('/profilBearbeiten',(req, res, next) => {
     
     if(idKunde){
         console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('profilBearbieten.ejs', {  
+        res.render('profilBearbeiten.ejs', {  
             meldung: ""                            
         })
     }else{
@@ -167,7 +167,7 @@ app.post('/profilBearbeiten',(req, res, next) => {
         
         kunde.Adresse = req.body.adresse
         kunde.Kennwort = req.body.kennwort
-        kunde.Telefon = req.body.telefon
+        kunde.Name = req.body.Name
 
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('profilBearbeiten.ejs', {   
