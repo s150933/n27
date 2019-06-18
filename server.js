@@ -29,6 +29,7 @@ kunde.Name = "Zuki"
 kunde.Kennwort = "123"
 kunde.IdKunde = 4711
 
+const iban = require('iban')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -135,9 +136,15 @@ app.post('/kontoAnlegen',(req, res, next) => {
         konto.Kontonummer = req.body.kontonummer
         konto.Kontoart = req.body.kontoart
 
+        const bankleitzahl = '27000000'
+        const laenderkennung = 'DE'
+
+        let errechneteIban = iban.fromBBAN(laenderkennung, bankleitzahl + " " + req.body.kontonummer)
+console.log(errechneteIban)
+
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', {   
-            meldung: "Das " + konto.Kontoart +  konto.Kontonummer + " wurde erfolgreich angelegt"                           
+            meldung: "Das " + konto.Kontoart +  konto.Kontonummer + "mit der Iban " + errechneteIban + " wurde erfolgreich angelegt"                           
         })
     }else{
         res.render('login.ejs', {                    
