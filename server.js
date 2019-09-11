@@ -34,10 +34,21 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const app = express()
+const mysql = require('mysql')
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
+
+const dbVerbindung = mysql.createConnection({
+    host: "10.40.38.110",
+    port: "3306",
+    db:"dbn27",
+    user: "placematman",
+    password: "BKB123456!"
+})
+
+dbVerbindung.connect()
 
 const server = app.listen(process.env.PORT || 3000, () => {
     console.log('Server lauscht auf Port %s', server.address().port)    
@@ -141,6 +152,8 @@ app.post('/kontoAnlegen',(req, res, next) => {
 
         let errechneteIban = iban.fromBBAN(laenderkennung, bankleitzahl + " " + req.body.kontonummer)
 console.log(errechneteIban)
+// Einfügen von kontonummer in die Tabelle konto (SQL)
+        dbVerbindung.query("INSERT INTO konto(kontonummer) VALUES (123)")
 
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', {   
