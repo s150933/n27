@@ -208,14 +208,19 @@ app.post('/ueberweisen',(req, res, next) => {
     
     if(idKunde){
         
-        kunde.Telefonnummer = req.body.telefonnummer
-        kunde.Adresse = req.body.adresse
-        kunde.Kennwort = req.body.kennwort
-        kunde.Name = req.body.name
-        kunde.Mail= req.body.mail
-        kunde.Nachname = "Stein"
-
         console.log("Kunde ist angemeldet als " + idKunde)
+
+    // Das Zielkonto und der Betrag wird aus dem Formular entgegengenommen
+
+        let zielkontonummer = req.body.zielkontonummer
+        let betrag = req.body.betrag
+
+    // ToDo :Der Saldo um den Betrag reduzieren.
+    // ToDo: Betrag beim Zielkonto gutschreiben.
+
+    // Umsetzung mit einer gemeinsamen relationalen Datenbank.
+
+
         res.render('ueberweisen.ejs', {   
             meldung: "Die Überweisung wurde erfolgreich ausgeführt"                        
         })
