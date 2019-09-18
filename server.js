@@ -43,12 +43,25 @@ app.use(cookieParser())
 const dbVerbindung = mysql.createConnection({
     host: "10.40.38.110",
     port: "3306",
-    db:"dbn27",
+    database:"dbn27",
     user: "placematman",
     password: "BKB123456!"
 })
 
 dbVerbindung.connect()
+
+dbVerbindung.connect(function(err){
+
+    dbVerbindung.query("CREATE TABLE IF NOT EXISTS konto(iban VARCHAR(22), anfangssaldo FLOAT, kontoart VARCHAR(20), timestamp TIMESTAMP, PRIMARY KEY(iban));", function(err, result){
+        if(err){
+            console.log("Es ist ein ein Fehler aufgetreten: " + err)
+        } else {
+            console.log("Tabelle erstellt bzw. schon existent.")
+        }
+    })
+})
+
+
 
 const server = app.listen(process.env.PORT || 3000, () => {
     console.log('Server lauscht auf Port %s', server.address().port)    
@@ -153,7 +166,7 @@ app.post('/kontoAnlegen',(req, res, next) => {
         let errechneteIban = iban.fromBBAN(laenderkennung, bankleitzahl + " " + req.body.kontonummer)
 console.log(errechneteIban)
 // Einfügen von kontonummer in die Tabelle konto (SQL)
-        dbVerbindung.query("INSERT INTO konto(kontonummer) VALUES (123)")
+        dbVerbindung.query("INSERT INTO konto(iban, anfangssaldo, kontoart, timestamp) VALUES (123)")
 
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', {   
