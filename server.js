@@ -1,4 +1,7 @@
-// Klassendefinition
+// Klassendefinition. Die Klasse ist der Bauplan der alle relevanten Eigenschaften enthält.
+// Nach der Deklaration wird mit dem reservierten Wort 'new' ein Objekt der Klasse instanziiert.
+// 
+
 class Konto {
     constructor(){
         this.Kontonummer
@@ -155,8 +158,13 @@ app.post('/kontoAnlegen',(req, res, next) => {
 
     let idKunde = req.cookies['istAngemeldetAls']
     
+// Von der Klasse wird ein Objekt namens konto instanziiert.
+
     if(idKunde){
         let konto = new Konto()
+        // Nach der Deklaration und der Instanzzierung kommt die 
+        // Initialisierung . Das heißt, dass konkrete Eigenschaftswerte
+        // dem Objekt zugewiesen.
         konto.Kontonummer = req.body.kontonummer
         konto.Kontoart = req.body.kontoart
 
