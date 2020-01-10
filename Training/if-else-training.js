@@ -28,7 +28,7 @@
 
  //16. if(undefined) Die Prüfung ist falsch. Wenn ein Objekt nicht existiert ist es undefined.
 
- //15. if(0 < x || 0 < 11) Logisches oder. Die Prüfung ist wahr, wenn die Linke oder die Rechte oder beide Prüfungen wahr sind.
+ //15. if(0 < x || 0 < 10) Logisches oder. Die Prüfung ist wahr, wenn die Linke oder die Rechte oder beide Prüfungen wahr sind.
 
  //14. if(0 < x && x < 11) Logisches und. Die prüfung ist wahr,wenn beide Prüfungen wahr sind.
 

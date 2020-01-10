@@ -174,7 +174,7 @@ app.post('/kontoAnlegen',(req, res, next) => {
         let errechneteIban = iban.fromBBAN(laenderkennung, bankleitzahl + " " + req.body.kontonummer)
 console.log(errechneteIban)
 // Einfügen von kontonummer in die Tabelle konto (SQL)
-        dbVerbindung.query("INSERT INTO konto(iban, anfangssaldo, kontoart, timestamp) VALUES ('DE2134' , 2000 , 'Sparkonto' , NOW());")
+        dbVerbindung.query("INSERT INTO konto(iban, anfangssaldo, kontoart, timestamp) VALUES ('"  + errechneteIban + "' , 2000 , '"+ kontoart +"' , NOW());")
 
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', {   
@@ -248,9 +248,33 @@ app.post('/ueberweisen',(req, res, next) => {
 
         let zielkontonummer = req.body.zielkontonummer
         let betrag = req.body.betrag
+        
+        /*Der aktuelle Anfangssaldo wird aus der Datenbank ausgelesen.
 
-    // ToDo :Der Saldo um den Betrag reduzieren.
-    // ToDo: Betrag beim Zielkonto gutschreiben.
+       // dbVerbindung.connect(function(err){
+
+            dbVerbindung.query("SELECT anfangssaldo FROM konto WHERE iban = '" + zielkontonummer + "' ;", function(err, result){
+                if(err){
+                    console.log("Es ist ein ein Fehler aufgetreten: " + err)
+                } else {
+                    console.log("Tabelle erstellt bzw. schon existent.")
+                }
+            })
+        })
+         */
+        
+    // ToDo :Der Saldo um den Betrag reduzieren mit einem SQL-Update.
+    dbVerbindung.connect(function(err){
+
+        dbVerbindung.query("Update konto SET anfangssaldo = anfangssaldo + " + betrag + " "WHERE iban = "'";", function(err, result){
+            if(err){
+                console.log("Es ist ein ein Fehler aufgetreten: " + err)
+            } else {
+                console.log("Tabelle erstellt bzw. schon existent.")
+            }
+        })
+    })
+    // ToDo: Betrag beim Zielkonto gutschreiben mit einem SQL-Update.
 
     // Umsetzung mit einer gemeinsamen relationalen Datenbank.
 
