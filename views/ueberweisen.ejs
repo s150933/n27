@@ -21,16 +21,15 @@
       <a href="/login">Logout</a>        
       <a href="/impressum">Impressum</a>   
       <a href="mailto:stefan.baeumer@berufskolleg-borken.de"> <i class="fa fa-envelope-o"></i></a>
-      <a href="/profilBearbeiten"><i class="fa fa-user" aria-hidden="true"></i></a>
-  </nav>
-    
+      <a href="/profilBearbeiten"><i class="fa fa-id-card-o" aria-hidden="true"></i></a>        
+    </nav>
     <form method="POST" action="/ueberweisen">          
-        <label>Zielkontonnumer:</label>          
-        <input type="number" name="zielkontonummer">
+        <label>Zielkontonummer:</label>          
+        <input type="text" name="zielkontonummer" pattern="[0-9]{10}" title="Bitte exakt 10 Ziffern eingeben!">
         <label>Betrag:</label>          
         <input type="number" name="betrag">          
-        <button>überweisen</button>
-    </form> 
-   <p> <%= meldung %> </p>
+        <button>Überweisen</button>
+    </form>  
+    <%= meldung %>
   </body>
 </html>

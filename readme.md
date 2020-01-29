@@ -1,6 +1,6 @@
 # N27 Smartphone Bank
 
-Wir wollen eine Banking-App programmieren die sich an, die N26-Bank anlehnt.
+Wir wollen eine Banking-App programmieren, die sich an die N26-Bank anlehnt.
 
 ## Funktionen
 
@@ -8,8 +8,8 @@ Wir wollen eine Banking-App programmieren die sich an, die N26-Bank anlehnt.
 * Profil anzeigen
 * Überweisungen durchführen
 * Kontenübersicht anzeigen
-* Kontenauszug/ Kontenbewegungen anzeigen
-* Gesprächstermine vereinbaren
+* Kontoauszug / Kontobewegungen anzeigen
+* Gesprächstermine vereinbaren 
 * Supportfragen stellen / Problem melden
 * Kredit aufnehmen / beantragen / Konditionen anzeigen
 * Angebote anbieten
@@ -19,7 +19,7 @@ Wir wollen eine Banking-App programmieren die sich an, die N26-Bank anlehnt.
 * Aktien anzeigen / kaufen / ...
 * Paypal / Bitcoin unterstützen
 * Jobangebote anzeigen
-* Impressum anzeigen 
+* Impressum anzeigen
 * Geldautomaten in der Nähe zeigen
 
 ## Aussehen
